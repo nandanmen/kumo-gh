@@ -21,7 +21,7 @@
   "module": "./dist/index.js",
   "types": "./dist/src/index.d.ts",
   "bin": {
-    "kumo": "./dist/command-line/cli.js"
+    "kumo": "./bin/kumo.js"
   },
   "exports": {
     ".": {
@@ -350,6 +350,7 @@
   },
   "files": [
     "dist",
+    "bin",
     "ai",
     "templates",
     "scripts",
@@ -377,7 +378,7 @@
     "codegen:primitives": "tsx scripts/generate-primitives.ts",
     "codegen:registry": "pnpm --filter @cloudflare/kumo-docs-astro codegen:demos && tsx scripts/component-registry/index.ts",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
-    "lint:oxlint": "oxlint src/** --type-aware",
+    "lint:oxlint": "oxlint --config .oxlintrc.json src/** --type-aware",
     "lint:eslint": "eslint src/",
     "test": "CI=true vitest run --project=unit",
     "test:ui": "vitest --ui",
@@ -393,7 +394,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
-    "zod": "^3.24.0"
+    "zod": "^4.0.0"
   },
   "peerDependenciesMeta": {
     "zod": {
@@ -435,6 +436,6 @@
     "vite-plugin-dts": "catalog:",
     "vitest": "catalog:",
     "wrangler": "catalog:",
-    "zod": "^3.24.0"
+    "zod": "^4.0.0"
   }
 }
