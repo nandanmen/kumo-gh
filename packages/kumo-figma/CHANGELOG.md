@@ -1,5 +1,17 @@
 # @cloudflare/figma-plugin
 
+## 0.3.0
+
+### Minor Changes
+
+- 001f9e7: fixes to figma plugin init + zod v4 in kumo
+
+### Patch Changes
+
+- Updated dependencies [6dc9a73]
+- Updated dependencies [001f9e7]
+  - @cloudflare/kumo@1.1.0
+
 ## 0.2.0
 
 ### Minor Changes
