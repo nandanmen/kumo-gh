@@ -2344,13 +2344,7 @@
           "description": "Callback when end date changes"
         }
       },
-      "examples": [
-        "<div className=\"flex flex-col gap-4\">\n      <DateRangePicker\n        onStartDateChange={setStartDate}\n        onEndDateChange={setEndDate}\n      />\n      <div className=\"text-sm text-kumo-subtle\">\n        {startDate && endDate ? (\n          <span>\n            Selected: {startDate.toLocaleDateString()} -{\" \"}\n            {endDate.toLocaleDateString()}\n          </span>\n        ) : startDate ? (\n          <span>Start: {startDate.toLocaleDateString()} (select end date)</span>\n        ) : (\n          <span>Select a date range</span>\n        )}\n      </div>\n    </div>",
-        "<div className=\"flex flex-col gap-8\">\n      <div>\n        <p className=\"mb-2 text-sm font-medium text-kumo-default\">Small</p>\n        <DateRangePicker\n          size=\"sm\"\n          onStartDateChange={() => {}}\n          onEndDateChange={() => {}}\n        />\n      </div>\n      <div>\n        <p className=\"mb-2 text-sm font-medium text-kumo-default\">\n          Base (default)\n        </p>\n        <DateRangePicker\n          size=\"base\"\n          onStartDateChange={() => {}}\n          onEndDateChange={() => {}}\n        />\n      </div>\n      <div>\n        <p className=\"mb-2 text-sm font-medium text-kumo-default\">Large</p>\n        <DateRangePicker\n          size=\"lg\"\n          onStartDateChange={() => {}}\n          onEndDateChange={() => {}}\n        />\n      </div>\n    </div>",
-        "<div className=\"flex flex-col gap-8\">\n      <div>\n        <p className=\"mb-2 text-sm font-medium text-kumo-default\">\n          Default variant\n        </p>\n        <DateRangePicker\n          variant=\"default\"\n          onStartDateChange={() => {}}\n          onEndDateChange={() => {}}\n        />\n      </div>\n      <div>\n        <p className=\"mb-2 text-sm font-medium text-kumo-default\">\n          Subtle variant\n        </p>\n        <DateRangePicker\n          variant=\"subtle\"\n          onStartDateChange={() => {}}\n          onEndDateChange={() => {}}\n        />\n      </div>\n    </div>",
-        "<DateRangePicker\n      timezone=\"London, UK (GMT+0)\"\n      onStartDateChange={() => {}}\n      onEndDateChange={() => {}}\n    />",
-        "<div className=\"flex flex-col gap-4\">\n      <DateRangePicker\n        onStartDateChange={setStartDate}\n        onEndDateChange={setEndDate}\n      />\n      <div className=\"rounded-lg bg-kumo-control p-3 text-sm text-kumo-default\">\n        <strong>Selection:</strong> {formatDateRange()}\n      </div>\n    </div>"
-      ],
+      "examples": [],
       "colors": [
         "bg-kumo-base",
         "bg-kumo-contrast",
