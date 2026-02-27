@@ -411,15 +411,37 @@ export function FlowNodeList({ children }: { children: ReactNode }) {
   const endAnchor = firstNode?.props?.end ?? null;
   const startAnchor = lastNode?.props?.start ?? null;
 
-  const nodeProps = useMemo(
-    () => ({
-      parallel: false,
-      disabled: false,
+  // Stabilize nodeProps to prevent infinite re-render loops.
+  // When nested inside a Parallel, useOptionalNode registers with the parent
+  // context. Registration triggers a parent re-render, which rebuilds the
+  // descendants array with new object references. Without stabilization,
+  // startAnchor/endAnchor get new references each render → new nodeProps →
+  // useOptionalNode re-registers → parent re-renders → infinite loop.
+  const nodePropsRef = useRef<NodeData>({
+    parallel: false,
+    disabled: false,
+    start: null,
+    end: null,
+  });
+
+  const nodeProps = useMemo(() => {
+    const next = {
+      parallel: false as const,
+      disabled: false as const,
       start: startAnchor,
       end: endAnchor,
-    }),
-    [startAnchor, endAnchor],
-  );
+    };
+    const prev = nodePropsRef.current;
+    if (
+      JSON.stringify(prev.start) === JSON.stringify(next.start) &&
+      JSON.stringify(prev.end) === JSON.stringify(next.end)
+    ) {
+      return prev;
+    }
+    nodePropsRef.current = next;
+    return next;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(startAnchor), JSON.stringify(endAnchor)]);
 
   // Register with parent context if we're nested (e.g., inside Flow.Parallel)
   useOptionalNode(nodeProps);
